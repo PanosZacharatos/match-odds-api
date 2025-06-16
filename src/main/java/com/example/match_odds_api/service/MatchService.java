@@ -24,15 +24,25 @@ public class MatchService {
 
     public Match getMatchById(Long id){
         return matchRepository.findById(id)
-                .orElseThrow(()-> new RuntimeException("Match not found"));
+                .orElseThrow(()-> new RuntimeException("Match with id: " + id + " could not be found"));
     }
 
-    public Match updateMatch(Match updatedMatch){
-        return matchRepository.save(updatedMatch);
+    public Match updateMatch(Match updatedMatch,Long id){
+        if(!matchRepository.existsById(id)){
+            throw new RuntimeException("Match with id: " + updatedMatch.getId() + " could not be found");
+        }
+        else {
+            return matchRepository.save(updatedMatch);
+        }
     }
 
     public void deleteMatch(Long id){
-        matchRepository.deleteById(id);
+        if(!matchRepository.existsById(id)){
+            throw new RuntimeException("Match with id: " + id + " could not be found");
+        }
+        else{
+            matchRepository.deleteById(id);
+        }
     }
 
 }

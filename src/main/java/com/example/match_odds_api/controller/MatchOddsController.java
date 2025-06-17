@@ -31,9 +31,9 @@ public class MatchOddsController {
         return ResponseEntity.ok(matchOddsService.createMatchOdds(matchOdds,matchId));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<MatchOdds> updateMatchOdds(@RequestBody MatchOdds updatedMatchOdds,@PathVariable Long id){
-        return ResponseEntity.ok(matchOddsService.updateMatchOdds(updatedMatchOdds,id));
+    @PutMapping("/{id}/match/{matchId}")
+    public ResponseEntity<MatchOdds> updateMatchOdds(@RequestBody MatchOdds updatedMatchOdds,@PathVariable Long id,@PathVariable Long matchId){
+        return ResponseEntity.ok(matchOddsService.updateMatchOdds(updatedMatchOdds,id,matchId));
     }
 
     @DeleteMapping("/{id}")

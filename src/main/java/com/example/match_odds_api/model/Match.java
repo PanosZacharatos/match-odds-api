@@ -2,9 +2,7 @@ package com.example.match_odds_api.model;
 
 import com.example.match_odds_api.enums.SportType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -15,6 +13,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@Getter
 public class Match {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
